@@ -8,13 +8,15 @@ export default class NewMessageComponent {
   createMessageBox(message) {
     if (message) {
       let align = 'start';
+      let color = ';background-color: #DFDFEA;';
       if (message.sender === 'vous') {
         align = 'end';
+        color = ';background-color: #EDF4FF;';
       }
       const container = this.#context.createElement('div');
       container.style.cssText = `height:50px;margin:10px;text-align:end;justify-content:${align};display:flex`;
       const containerUtil = this.#context.createElement('div');
-      containerUtil.style.cssText = 'min-width:150px;display:flex;flex-direction:column;justify-content:start;align-items:baseline;border:solid;border-radius:10px;';
+      containerUtil.style.cssText = `min-width:150px;display:flex;flex-direction:column;justify-content:start;align-items:baseline;border:solid;border-radius:10px;;box-shadow: 2px 2px 2px grey${color}`;
       const dateAndSender = this.#context.createElement('p');
       dateAndSender.innerHTML = message.sender;
       dateAndSender.style.cssText = 'font-size:12px';
