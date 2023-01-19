@@ -1,4 +1,4 @@
-import addition from '../core/addition';
+import addition, { helper } from '../core/addition';
 import Bot from '../model/bot';
 import Chat from '../model/chat';
 
@@ -12,7 +12,7 @@ export default class DataStore {
   constructor() {
     this.#chat = new Chat();
     this.#contacts = [
-      new Bot('WALL-E', addition),
+      new Bot('WALL-E', addition, helper),
       new Bot('JARVIS'),
       new Bot('R2D2')
     ];

@@ -18,3 +18,7 @@ export default function addition(message, name) {
   }
   return null;
 }
+
+export function helper() {
+  return ' | < nombre > + < nombre >=?';
+}
