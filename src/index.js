@@ -5,15 +5,27 @@ import './index.scss';
 import DataStore from './data/dataStore';
 import ChatBotComponent from './view/chatbot-component';
 
-const chatBotComponent = new ChatBotComponent(document);
-const table = chatBotComponent.createBotTable(DataStore.INSTANCE.contacts);
-document.getElementById('chatbot-view').append(table);
-DataStore.INSTANCE.contacts.forEach((element) => {
-  element.subscribe(this, (value) => {
-    console.log('ok', value);
-  });
-});
+const bots = DataStore.INSTANCE.contacts;
+const currentChat = DataStore.INSTANCE.chat;
 
-function notify(message) {
-  console.log(message);
+function receiveMessage(message) {
+  console.log(`new message : ${message}`);
 }
+currentChat.subscribe(this, receiveMessage);
+
+function sendMessage() {
+  const p = document.createElement('p');
+  p.innerHTML = 'wesh';
+  document.getElementById('chat').append(p);
+  currentChat.addMessage('wesh');
+}
+
+const sendBtn = document.getElementById('sendBtn');
+sendBtn.addEventListener('click', sendMessage);
+const chatBotComponent = new ChatBotComponent(document);
+const table = chatBotComponent.createBotTable(bots);
+document.getElementById('chatbot-view').append(table);
+
+// DataStore.INSTANCE.contacts.forEach((element) => {
+//   element.addSubject(chat, receiveMessage);
+// });

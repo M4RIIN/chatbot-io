@@ -1,7 +1,7 @@
 export default class Bot {
   #name;
 
-  #observers = [];
+  // #subject = [];
 
   constructor(name) {
     this.#name = name;
@@ -11,13 +11,18 @@ export default class Bot {
     return this.#name;
   }
 
-  subscribe(obs, callBack) {
-    this.#observers.push({ o: obs, callBack });
-  }
+  // addSubject(obs, callBack) {
+  //   this.#observers.push({ o: obs, callBack });
+  // }
 
-  sayHello() {
-    this.#observers.forEach((obs) => {
-      obs.callBack(`Bonjour je suis ${this.#name}`);
-    });
+  // sayHello() {
+  //   this.#observers.forEach((obs) => {
+  //     obs.callBack(`Bonjour je suis ${this.#name}`);
+  //   });
+  // }
+
+  answerToAMessage() {
+    // eslint-disable-next-line no-console
+    console.log('ca prend la teté');
   }
 }

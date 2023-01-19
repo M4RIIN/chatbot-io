@@ -1,15 +1,22 @@
 import Bot from '../model/bot';
+import Chat from '../model/chat';
 
 export default class DataStore {
   static #instance = null;
 
   #contacts;
 
+  #chat;
+
   constructor() {
+    this.#chat = new Chat();
     this.#contacts = [
       new Bot('Henri'),
       new Bot('J4RVIS')
     ];
+    this.#contacts.forEach((c) => {
+      this.#chat.subscribe(c, c.answerToAMessage);
+    });
   }
 
   static get INSTANCE() {
@@ -21,5 +28,9 @@ export default class DataStore {
 
   get contacts() {
     return this.#contacts;
+  }
+
+  get chat() {
+    return this.#chat;
   }
 }
