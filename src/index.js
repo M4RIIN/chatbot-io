@@ -4,20 +4,43 @@
 import './index.scss';
 import DataStore from './data/dataStore';
 import ChatBotComponent from './view/chatbot-component';
+import NewMessageComponent from './view/new-message-component';
+import Message from './model/message';
+
+class ViewUpdater {
+  fn;
+
+  constructor(fns) {
+    this.fn = fns;
+  }
+
+  answerToAMessage(message, nom) {
+    this.fn(message);
+  }
+}
 
 const bots = DataStore.INSTANCE.contacts;
 const currentChat = DataStore.INSTANCE.chat;
 
 function receiveMessage(message) {
-  console.log(`new message : ${message}`);
+  if (message) {
+    console.log(`new message : ${message.sender}`);
+    const newMessageBox = new NewMessageComponent(document);
+    const messageBox = newMessageBox.createMessageBox(message);
+    document.getElementById('chat').append(messageBox);
+  }
 }
-currentChat.subscribe(this, receiveMessage);
+currentChat.setUpdateView(receiveMessage);
+const v = new ViewUpdater(receiveMessage);
+currentChat.subscribe(v);
+
+DataStore.INSTANCE.initSubs();
 
 function sendMessage() {
-  const p = document.createElement('p');
-  p.innerHTML = 'wesh';
-  document.getElementById('chat').append(p);
-  currentChat.addMessage('wesh');
+  const message = document.getElementById('message').value;
+  console.log(message);
+  const newMessage = new Message('vous', message);
+  currentChat.addMessage(newMessage);
 }
 
 const sendBtn = document.getElementById('sendBtn');

@@ -1,3 +1,4 @@
+import addition from '../core/addition';
 import Bot from '../model/bot';
 import Chat from '../model/chat';
 
@@ -11,9 +12,13 @@ export default class DataStore {
   constructor() {
     this.#chat = new Chat();
     this.#contacts = [
-      new Bot('Henri'),
-      new Bot('J4RVIS')
+      new Bot('WALL-E', addition),
+      new Bot('JARVIS'),
+      new Bot('R2D2')
     ];
+  }
+
+  initSubs() {
     this.#contacts.forEach((c) => {
       this.#chat.subscribe(c, c.answerToAMessage);
     });

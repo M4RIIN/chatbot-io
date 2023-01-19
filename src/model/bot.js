@@ -1,28 +1,26 @@
+import Message from './message';
+
 export default class Bot {
   #name;
 
-  // #subject = [];
+  #comportement;
 
-  constructor(name) {
+  constructor(name, comportement) {
     this.#name = name;
+    this.#comportement = comportement;
   }
 
   get name() {
     return this.#name;
   }
 
-  // addSubject(obs, callBack) {
-  //   this.#observers.push({ o: obs, callBack });
-  // }
-
-  // sayHello() {
-  //   this.#observers.forEach((obs) => {
-  //     obs.callBack(`Bonjour je suis ${this.#name}`);
-  //   });
-  // }
-
-  answerToAMessage() {
-    // eslint-disable-next-line no-console
-    console.log('ca prend la teté');
+  answerToAMessage(message) {
+    if (message.message.toLowerCase() === 'bonjour') {
+      return new Message(this.#name, 'Salut Salut !');
+    }
+    if (this.#comportement) {
+      return this.#comportement(message, this.#name);
+    }
+    return null;
   }
 }

@@ -6,13 +6,6 @@ export default class ChatBotComponent {
   }
 
   createBotTable(bots) {
-    // const bots = DataStore.INSTANCE.contacts;
-    // const list = this.#context.createElement('ul');
-    // bots.forEach((bot) => {
-    //   const item = this.#context.createElement('li');
-    //   item.textContent = bot.name;
-    //   list.appendChild(item);
-    // });
     const container = this.#context.createElement('div');
     bots.forEach((bot) => {
       container.appendChild(this.#createContainer(bot));
