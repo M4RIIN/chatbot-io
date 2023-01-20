@@ -31,10 +31,11 @@ export default class Bot {
       return new Message(this.#name, 'Salut Salut !', new Date());
     }
     if (message.message === 'help') {
-      const helperResponse = [];
+      let helperResponse = [];
       helperResponse.push('bonjour : Saluez tout le monde');
       if (this.#helper) {
         helperResponse.push(this.#helper());
+        helperResponse = helperResponse.flat();
       }
       return new Message(this.#name, this.#createHelper(helperResponse), new Date());
     }

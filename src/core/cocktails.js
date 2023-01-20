@@ -18,9 +18,12 @@ export default function cocktails(message, name) {
     console.log(myArr);
     return new Message(name, createHTML(myArr), new Date());
   }
+  if (message.message === 'pref') {
+    return new Message(name, 'J\'avou j\'ai un faible pour le Bloody Mary', new Date());
+  }
   return null;
 }
 
 export function helperCocktails() {
-  return 'cocktails : je vous donnerai un cocktail aléatoire à réaliser';
+  return ['cocktails : je vous donnerai un cocktail aléatoire à réaliser', 'pref : je vous donnerai mon cocktail favoris !'];
 }

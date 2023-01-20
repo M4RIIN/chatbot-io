@@ -20,5 +20,5 @@ export default function addition(message, name) {
 }
 
 export function helper() {
-  return '< nombre > + < nombre >=? : Faites moi faire une addition. Ex : 4+5=?';
+  return ['< nombre > + < nombre >=? : Faites moi faire une addition. Ex : 4+5=?'];
 }

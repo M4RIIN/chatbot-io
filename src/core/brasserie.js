@@ -21,9 +21,12 @@ export default function brasserie(message, name) {
     console.log(myArr);
     return new Message(name, createHTML(myArr), new Date());
   }
+  if (message.message === 'heure') {
+    return new Message(name, `Il est ${new Date().toLocaleTimeString()}, l'heure de se : <strong> pinter </strong> !`, new Date());
+  }
   return null;
 }
 
 export function helperBrasseries() {
-  return 'brasseries : je vous donnerai une liste de 5 brasseries que vous pourriez visiter';
+  return ['brasseries : je vous donnerai une liste de 5 brasseries que vous pourriez visiter', 'heure : je vous dirais l`heure qu\'il est'];
 }

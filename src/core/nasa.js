@@ -1,4 +1,5 @@
 import Message from '../model/message';
+import addition, { helper } from './addition';
 
 function createHTML(arrayResponse) {
   const { url } = arrayResponse;
@@ -14,9 +15,9 @@ export default function nasa(message, name) {
     const myArr = JSON.parse(xmlHttp.responseText);
     return new Message(name, createHTML(myArr), new Date());
   }
-  return null;
+  return addition(message, name);
 }
 
 export function helperNasa() {
-  return 'nasa today : obtenez la photo de l\'espace aujourd\'hui';
+  return ['nasa today : obtenez la photo de l\'espace aujourd\'hui', helper()];
 }
