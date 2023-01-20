@@ -33,7 +33,12 @@ export default class DataStore {
       historique.forEach((elt) => {
         if (elt) {
           console.log('elt', elt);
-          const msgString = JSON.parse(elt);
+          let msgString = elt;
+          try {
+            msgString = JSON.parse(elt);
+          } catch (error) {
+            const e = error;
+          }
           const cleanMsg = msgString.message.replaceAll('__^^', '"');
           const msg = new Message(msgString.sender, cleanMsg, new Date(msgString.date));
           this.#chat.addMessage(msg);
