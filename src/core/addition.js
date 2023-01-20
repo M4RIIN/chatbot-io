@@ -1,4 +1,4 @@
-import Message from '../src/model/message';
+import Message from '../model/message';
 
 export default function addition(message, name) {
   const splittedMessage = message.message.split('+');

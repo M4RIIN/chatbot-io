@@ -1,4 +1,4 @@
-import Message from '../src/model/message';
+import Message from '../model/message';
 
 function createHTML(arrayResponse) {
   let htmlResponse = '<div style="width:100%;border-radius:10px;background-color:#053147;color:white;text-align: left;margin-right: 10px;margin-left: 10px;padding-right: 5px;margin-bottom: 10px"><p style="">Voici une liste de 5 brasseries que vous pourriez visiter :</p><ul>';

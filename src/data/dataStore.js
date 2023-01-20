@@ -1,9 +1,9 @@
 import brasserie, { helperBrasseries } from '../core/brasserie';
 import cocktails, { helperCocktails } from '../core/cocktails';
 import nasa, { helperNasa } from '../core/nasa';
-import Bot from '../src/model/bot';
-import Chat from '../src/model/chat';
-import Message from '../src/model/message';
+import Bot from '../model/bot';
+import Chat from '../model/chat';
+import Message from '../model/message';
 import NewMessageComponent from '../view/new-message-component';
 
 export default class DataStore {

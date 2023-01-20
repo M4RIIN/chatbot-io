@@ -1,4 +1,4 @@
-import Message from '../src/model/message';
+import Message from '../model/message';
 import addition, { helper } from './addition';
 
 function createHTML(arrayResponse) {

@@ -1,4 +1,4 @@
-import Message from '../src/model/message';
+import Message from '../model/message';
 
 function createHTML(responseJson) {
   const response = responseJson.drinks[0];

@@ -3,9 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
-  entry: './index.js',
+  entry: './src/index.js',
   output: {
-    filename: '[name].[fullhash].js',
+    filename: 'src/[name].[fullhash].js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
@@ -48,7 +48,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'index.html'),
+      template: path.resolve(__dirname, './index.html'),
       inject: 'body',
       hash: true
     }),
