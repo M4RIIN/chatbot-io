@@ -4,4 +4,3 @@ webpack.config.js
 .yarn-error.log
 
 src/scss/
-./src/

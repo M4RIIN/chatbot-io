@@ -1,9 +1,5 @@
-/* eslint-disable no-console */
-/* eslint-disable no-empty */
-
 import Message from '../model/message';
 
-// eslint-disable-next-line no-unused-vars
 export default function addition(message, name) {
   const splittedMessage = message.message.split('+');
   if (splittedMessage.length === 2) {

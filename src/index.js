@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable spaced-comment */
-/* eslint-disable no-console */
 import DataStore from './data/dataStore';
 import ChatBotComponent from './view/chatbot-component';
 import NewMessageComponent from './view/new-message-component';
@@ -13,7 +10,7 @@ class ViewUpdater {
     this.fn = fns;
   }
 
-  answerToAMessage(message, nom) {
+  answerToAMessage(message) {
     this.fn(message);
   }
 }
@@ -23,7 +20,6 @@ const currentChat = DataStore.INSTANCE.chat;
 
 function receiveMessage(message) {
   if (message) {
-    console.log(`new message : ${message.sender}`);
     const newMessageBox = new NewMessageComponent(document);
     const messageBox = newMessageBox.createMessageBox(message);
     document.getElementById('chat').append(messageBox);
@@ -38,7 +34,6 @@ DataStore.INSTANCE.initSubs();
 
 function sendMessage() {
   const message = document.getElementById('message').value;
-  console.log(message);
   const newMessage = new Message('vous', message, new Date());
   currentChat.addMessage(newMessage);
   document.getElementById('message').value = '';

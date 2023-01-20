@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import Message from '../model/message';
 
 function createHTML(responseJson) {
@@ -12,10 +11,9 @@ function createHTML(responseJson) {
 export default function cocktails(message, name) {
   if (message.message === 'cocktails') {
     const xmlHttp = new XMLHttpRequest();
-    xmlHttp.open('GET', 'https://www.thecocktaildb.com/api/json/v1/1/random.php', false); // false for synchronous request
+    xmlHttp.open('GET', 'https://www.thecocktaildb.com/api/json/v1/1/random.php', false);
     xmlHttp.send(null);
     const myArr = JSON.parse(xmlHttp.responseText);
-    console.log(myArr);
     return new Message(name, createHTML(myArr), new Date());
   }
   if (message.message === 'pref') {

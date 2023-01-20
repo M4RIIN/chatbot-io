@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 import brasserie, { helperBrasseries } from '../core/brasserie';
 import cocktails, { helperCocktails } from '../core/cocktails';
 import nasa, { helperNasa } from '../core/nasa';
@@ -17,7 +15,6 @@ export default class DataStore {
 
   #receiveMessage(message) {
     if (message) {
-      console.log(`new message : ${message.sender}`);
       const newMessageBox = new NewMessageComponent(document);
       const messageBox = newMessageBox.createMessageBox(message);
       document.getElementById('chat').append(messageBox);
@@ -27,17 +24,15 @@ export default class DataStore {
 
   constructor() {
     const historique = JSON.parse(localStorage.getItem('messages'));
-    console.log(historique);
     this.#chat = new Chat();
     if (historique) {
       historique.forEach((elt) => {
         if (elt) {
-          console.log('elt', elt);
           let msgString = elt;
           try {
             msgString = JSON.parse(elt);
           } catch (error) {
-            const e = error;
+            msgString = elt;
           }
           const cleanMsg = msgString.message.replaceAll('__^^', '"');
           const msg = new Message(msgString.sender, cleanMsg, new Date(msgString.date));

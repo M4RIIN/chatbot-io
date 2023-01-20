@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import Message from '../model/message';
 
 function createHTML(arrayResponse) {
@@ -15,10 +14,9 @@ function createHTML(arrayResponse) {
 export default function brasserie(message, name) {
   if (message.message === 'brasseries') {
     const xmlHttp = new XMLHttpRequest();
-    xmlHttp.open('GET', 'https://api.openbrewerydb.org/breweries/random?size=5', false); // false for synchronous request
+    xmlHttp.open('GET', 'https://api.openbrewerydb.org/breweries/random?size=5', false);
     xmlHttp.send(null);
     const myArr = JSON.parse(xmlHttp.responseText);
-    console.log(myArr);
     return new Message(name, createHTML(myArr), new Date());
   }
   if (message.message === 'heure') {
