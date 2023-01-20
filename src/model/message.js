@@ -5,10 +5,10 @@ export default class Message {
 
   #date;
 
-  constructor(sender, message) {
+  constructor(sender, message, date) {
     this.#message = message;
     this.#sender = sender;
-    this.#date = new Date();
+    this.#date = date;
   }
 
   get date() {
@@ -21,5 +21,9 @@ export default class Message {
 
   get message() {
     return this.#message;
+  }
+
+  toJSON() {
+    return `{"sender":"${this.#sender}","date":"${this.#date}","message":"${this.#message.replaceAll('"', '__^^')}"}`;
   }
 }

@@ -1,8 +1,12 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 import brasserie, { helperBrasseries } from '../core/brasserie';
 import cocktails, { helperCocktails } from '../core/cocktails';
 import nasa, { helperNasa } from '../core/nasa';
 import Bot from '../model/bot';
 import Chat from '../model/chat';
+import Message from '../model/message';
+import NewMessageComponent from '../view/new-message-component';
 
 export default class DataStore {
   static #instance = null;
@@ -11,8 +15,32 @@ export default class DataStore {
 
   #chat;
 
+  #receiveMessage(message) {
+    if (message) {
+      console.log(`new message : ${message.sender}`);
+      const newMessageBox = new NewMessageComponent(document);
+      const messageBox = newMessageBox.createMessageBox(message);
+      document.getElementById('chat').append(messageBox);
+      document.getElementById('chat').scrollTo(0, document.getElementById('chat').scrollHeight);
+    }
+  }
+
   constructor() {
+    const historique = JSON.parse(localStorage.getItem('messages'));
+    console.log(historique);
     this.#chat = new Chat();
+    if (historique) {
+      historique.forEach((elt) => {
+        if (elt) {
+          console.log('elt', elt);
+          const msgString = JSON.parse(elt);
+          const cleanMsg = msgString.message.replaceAll('__^^', '"');
+          const msg = new Message(msgString.sender, cleanMsg, new Date(msgString.date));
+          this.#chat.addMessage(msg);
+          this.#receiveMessage(msg);
+        }
+      });
+    }
     this.#contacts = [
       new Bot('WALL-E', cocktails, helperCocktails),
       new Bot('JARVIS', brasserie, helperBrasseries),

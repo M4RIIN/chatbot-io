@@ -12,7 +12,7 @@ export default function addition(message, name) {
       splittedMessage.push(splittedMessagePart2[1]);
       if (!Number.isNaN(splittedMessage[0]) && !Number.isNaN(splittedMessagePart2[0]) && splittedMessage[2] === '?') {
         const result = Number(splittedMessage[0]) + Number(splittedMessagePart2[0]);
-        return new Message(name, `${splittedMessage[0]}+${splittedMessagePart2[0]}=${result}`);
+        return new Message(name, `${splittedMessage[0]}+${splittedMessagePart2[0]}=${result}`, new Date());
       }
     }
   }

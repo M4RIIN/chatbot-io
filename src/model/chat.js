@@ -12,6 +12,10 @@ export default class Chat {
     this.#observers = [];
   }
 
+  get messages() {
+    return this.#messages;
+  }
+
   subscribe(obs) {
     this.#observers.push(obs);
   }
@@ -22,6 +26,13 @@ export default class Chat {
     console.log('observers : ', this.#observers);
     this.#observers.forEach((obs) => {
       const response = obs.answerToAMessage(message);
+      if (response) {
+        this.#messages.push(response);
+      }
+      const jsonToSave = JSON.stringify(this.#messages);
+      console.log(jsonToSave);
+      localStorage.clear();
+      localStorage.setItem('messages', jsonToSave);
       this.#updateView(response);
     });
   }

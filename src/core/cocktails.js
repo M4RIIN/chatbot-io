@@ -3,8 +3,7 @@ import Message from '../model/message';
 
 function createHTML(responseJson) {
   const response = responseJson.drinks[0];
-  let htmlResponse = `<div style="width:100%;border-radius:10px;background-color:#053147;color:white;text-align: left;margin-right: 10px;margin-left: 10px;padding-right: 5px;margin-bottom: 10px">
-    <p style="">Voici les instructions pour réaliser un ${response.strDrink} :</p><ul>`;
+  let htmlResponse = `<div style="width:100%;border-radius:10px;background-color:#053147;color:white;text-align: left;margin-right: 10px;margin-left: 10px;padding-right: 5px;margin-bottom: 10px"><p style="">Voici les instructions pour réaliser un ${response.strDrink} :</p><ul>`;
   htmlResponse += `<li><strong>${response.strInstructions}</li>`;
   htmlResponse += `</ul><img style="width:100%" src=${response.strDrinkThumb}></img></div>`;
   return htmlResponse;
@@ -17,7 +16,7 @@ export default function cocktails(message, name) {
     xmlHttp.send(null);
     const myArr = JSON.parse(xmlHttp.responseText);
     console.log(myArr);
-    return new Message(name, createHTML(myArr));
+    return new Message(name, createHTML(myArr), new Date());
   }
   return null;
 }

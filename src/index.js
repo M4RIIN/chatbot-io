@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable spaced-comment */
 /* eslint-disable no-console */
-import './index.scss';
 import DataStore from './data/dataStore';
 import ChatBotComponent from './view/chatbot-component';
 import NewMessageComponent from './view/new-message-component';
@@ -40,7 +39,7 @@ DataStore.INSTANCE.initSubs();
 function sendMessage() {
   const message = document.getElementById('message').value;
   console.log(message);
-  const newMessage = new Message('vous', message);
+  const newMessage = new Message('vous', message, new Date());
   currentChat.addMessage(newMessage);
   document.getElementById('message').value = '';
 }

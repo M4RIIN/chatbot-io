@@ -28,7 +28,7 @@ export default class Bot {
 
   answerToAMessage(message) {
     if (message.message.toLowerCase() === 'bonjour') {
-      return new Message(this.#name, 'Salut Salut !');
+      return new Message(this.#name, 'Salut Salut !', new Date());
     }
     if (message.message === 'help') {
       const helperResponse = [];
@@ -36,7 +36,7 @@ export default class Bot {
       if (this.#helper) {
         helperResponse.push(this.#helper());
       }
-      return new Message(this.#name, this.#createHelper(helperResponse));
+      return new Message(this.#name, this.#createHelper(helperResponse), new Date());
     }
     if (this.#comportement) {
       return this.#comportement(message, this.#name);
