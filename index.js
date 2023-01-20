@@ -1,7 +1,7 @@
-import DataStore from './src/data/dataStore';
-import ChatBotComponent from './src/view/chatbot-component';
-import NewMessageComponent from './src/view/new-message-component';
-import Message from './src/model/message';
+import DataStore from './data/dataStore';
+import ChatBotComponent from './view/chatbot-component';
+import NewMessageComponent from './view/new-message-component';
+import Message from './model/message';
 
 class ViewUpdater {
   fn;
