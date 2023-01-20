@@ -28,6 +28,7 @@ function receiveMessage(message) {
     const newMessageBox = new NewMessageComponent(document);
     const messageBox = newMessageBox.createMessageBox(message);
     document.getElementById('chat').append(messageBox);
+    document.getElementById('chat').scrollTo(0, document.getElementById('chat').scrollHeight);
   }
 }
 currentChat.setUpdateView(receiveMessage);
@@ -41,6 +42,7 @@ function sendMessage() {
   console.log(message);
   const newMessage = new Message('vous', message);
   currentChat.addMessage(newMessage);
+  document.getElementById('message').value = '';
 }
 
 const sendBtn = document.getElementById('sendBtn');
@@ -49,6 +51,9 @@ const chatBotComponent = new ChatBotComponent(document);
 const table = chatBotComponent.createBotTable(bots);
 document.getElementById('chatbot-view').append(table);
 
-// DataStore.INSTANCE.contacts.forEach((element) => {
-//   element.addSubject(chat, receiveMessage);
-// });
+document.getElementById('message').addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    sendBtn.click();
+  }
+});

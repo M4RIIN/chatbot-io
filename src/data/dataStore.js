@@ -1,4 +1,5 @@
-import addition, { helper } from '../core/addition';
+import brasserie, { helperBrasseries } from '../core/brasserie';
+import cocktails, { helperCocktails } from '../core/cocktails';
 import nasa, { helperNasa } from '../core/nasa';
 import Bot from '../model/bot';
 import Chat from '../model/chat';
@@ -13,8 +14,8 @@ export default class DataStore {
   constructor() {
     this.#chat = new Chat();
     this.#contacts = [
-      new Bot('WALL-E', addition, helper),
-      new Bot('JARVIS'),
+      new Bot('WALL-E', cocktails, helperCocktails),
+      new Bot('JARVIS', brasserie, helperBrasseries),
       new Bot('R2D2', nasa, helperNasa)
     ];
   }

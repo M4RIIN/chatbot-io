@@ -1,10 +1,8 @@
-/* eslint-disable no-console */
 import Message from '../model/message';
 
 function createHTML(arrayResponse) {
   const { url } = arrayResponse;
   const { title } = arrayResponse;
-  console.log(url);
   return `<div style="display:flex;width:100%;flex-direction:column">
   <p style="font-weight:bolder">${title}</p>
   <img style="max-height:100px" src=${url}></img>
