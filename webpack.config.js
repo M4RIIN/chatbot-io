@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'src/[name].[fullhash].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, './')
   },
   module: {
     rules: [
