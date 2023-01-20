@@ -17,16 +17,26 @@ export default class Bot {
     return this.#name;
   }
 
+  #createHelper(arrayMessages) {
+    let helperResult = '<div style="width:100%;border-radius:10px;background-color:#053147;color:white;text-align: left;margin-right: 10px;margin-left: 10px;padding-right: 5px;margin-bottom: 10px"><ul>';
+    arrayMessages.forEach((message) => {
+      helperResult += `<li>${message}</li>`;
+    });
+    helperResult += '</ul></div>';
+    return helperResult;
+  }
+
   answerToAMessage(message) {
     if (message.message.toLowerCase() === 'bonjour') {
       return new Message(this.#name, 'Salut Salut !');
     }
     if (message.message === 'help') {
-      let helperResponse = 'bonjour';
+      const helperResponse = [];
+      helperResponse.push('bonjour : Saluez tout le monde');
       if (this.#helper) {
-        helperResponse += this.#helper();
+        helperResponse.push(this.#helper());
       }
-      return new Message(this.#name, helperResponse);
+      return new Message(this.#name, this.#createHelper(helperResponse));
     }
     if (this.#comportement) {
       return this.#comportement(message, this.#name);

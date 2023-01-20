@@ -3,9 +3,16 @@ export default class Message {
 
   #message;
 
+  #date;
+
   constructor(sender, message) {
     this.#message = message;
     this.#sender = sender;
+    this.#date = new Date();
+  }
+
+  get date() {
+    return this.#date;
   }
 
   get sender() {

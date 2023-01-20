@@ -14,17 +14,19 @@ export default class NewMessageComponent {
         color = ';background-color: #EDF4FF;';
       }
       const container = this.#context.createElement('div');
-      container.style.cssText = `height:50px;margin:10px;text-align:end;justify-content:${align};display:flex`;
+      container.style.cssText = `min-height:50px;margin:10px;text-align:end;justify-content:${align};display:flex`;
       const containerUtil = this.#context.createElement('div');
       containerUtil.style.cssText = `min-width:150px;display:flex;flex-direction:column;justify-content:start;align-items:baseline;border:solid;border-radius:10px;;box-shadow: 2px 2px 2px grey${color}`;
       const dateAndSender = this.#context.createElement('p');
-      dateAndSender.innerHTML = message.sender;
-      dateAndSender.style.cssText = 'font-size:12px';
-      const botName = this.#context.createElement('p');
-      botName.style.cssText = 'font-size:10px';
-      botName.innerHTML = message.message;
+      const time = `${message.date.getHours()}:${message.date.getMinutes()}:${message.date.getSeconds()}`;
+      const date = `${message.date.getDate()}/${message.date.getMonth() + 1}/${message.date.getFullYear()}`;
+      dateAndSender.innerHTML = `${message.sender} - ${date} ${time}`;
+      dateAndSender.style.cssText = 'font-size:15px';
+      const contentMessage = this.#context.createElement('div');
+      contentMessage.style.cssText = 'font-size:15px;display:flex;max-width:300px;min-height:30px';
+      contentMessage.innerHTML = message.message;
       containerUtil.appendChild(dateAndSender);
-      containerUtil.appendChild(botName);
+      containerUtil.appendChild(contentMessage);
       container.appendChild(containerUtil);
       return container;
     } return null;

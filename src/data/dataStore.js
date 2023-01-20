@@ -1,4 +1,5 @@
 import addition, { helper } from '../core/addition';
+import nasa, { helperNasa } from '../core/nasa';
 import Bot from '../model/bot';
 import Chat from '../model/chat';
 
@@ -14,7 +15,7 @@ export default class DataStore {
     this.#contacts = [
       new Bot('WALL-E', addition, helper),
       new Bot('JARVIS'),
-      new Bot('R2D2')
+      new Bot('R2D2', nasa, helperNasa)
     ];
   }
 
